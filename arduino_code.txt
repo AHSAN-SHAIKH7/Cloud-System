@@ -15,7 +15,6 @@
   modified 2 Sep 2016
   by Arturo Guadalupi
   modified 8 Sep 2016
-  by Colby Newman
 
   https://www.arduino.cc/en/Tutorial/BuiltInExamples/Blink
 */
