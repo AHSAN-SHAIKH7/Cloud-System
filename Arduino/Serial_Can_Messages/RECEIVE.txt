@@ -1,0 +1,43 @@
+#include <SPI.h>
+#include <mcp2515.h>
+#define led 8
+#define led2 6
+#define led3 4
+struct can_frame canMsg;
+MCP2515 mcp2515(9);
+char x;
+void setup() {
+  mcp2515.reset();
+  mcp2515.setBitrate(CAN_125KBPS);
+  mcp2515.setNormalMode();
+ Serial.begin(9600);
+  pinMode(led, OUTPUT);
+  pinMode(led2, OUTPUT);
+  pinMode(led3, OUTPUT);
+  }
+void loop() {
+  if (mcp2515.readMessage(&canMsg) == MCP2515::ERROR_OK) {
+    x=canMsg.data[0];
+    Serial.println(x);
+    if(x=='R'){
+      Serial.println("HIGH");
+      digitalWrite(led,HIGH);
+      delay(2000);
+    }
+   if(x=='G'){
+     Serial.println("HIGH");
+      digitalWrite(led2,HIGH);
+      delay(2000);
+   }
+    if(x=='Y'){
+     Serial.println("HIGH");
+      digitalWrite(led3,HIGH);
+      delay(2000);
+   }
+    digitalWrite(led2,LOW);
+    digitalWrite(led,LOW);
+    digitalWrite(led3,LOW);
+     Serial.println("LOW");
+     delay(1000);
+  } 
+}

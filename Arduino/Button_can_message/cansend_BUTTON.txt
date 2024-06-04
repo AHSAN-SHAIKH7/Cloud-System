@@ -1,0 +1,32 @@
+#include <SPI.h>
+#include <mcp2515.h>
+#define btn 8
+struct can_frame cansend;
+MCP2515 mcp2515(9);
+int state = 0;
+void setup() {
+  cansend.can_id  = 0x01;
+  cansend.can_dlc = 1;
+  cansend.data[0] = 0x00;
+  mcp2515.reset();
+  mcp2515.setBitrate(CAN_125KBPS);
+  mcp2515.setNormalMode();
+  Serial.begin(9600);
+pinMode(btn, INPUT_PULLUP);
+}
+void loop() {
+  if (!digitalRead(btn)) {
+    Serial.println("BUTTON_PRESSES");
+   delay(7000);
+    state = !state;
+     Serial.println(state);
+    if (state) {
+    cansend.data[0] = 0x01;
+    }
+    else {
+      cansend.data[0] = 0x00;
+    }
+   mcp2515.sendMessage(&cansend);
+  }
+  Serial.println("Blank");
+}

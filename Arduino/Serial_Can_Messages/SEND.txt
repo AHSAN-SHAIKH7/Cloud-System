@@ -1,0 +1,23 @@
+#include <SPI.h>
+#include <mcp2515.h>
+struct can_frame cansend;
+MCP2515 mcp2515(9);
+char state;
+void setup() {
+  cansend.can_id  = 0x01;
+  cansend.can_dlc = 3;
+  mcp2515.reset();
+  mcp2515.setBitrate(CAN_125KBPS);
+  mcp2515.setNormalMode();
+  Serial.begin(9600);
+}
+void loop() {
+  if(Serial.available()){
+  state = Serial.read(); 
+  Serial.print(state);
+  cansend.data[0] = state;
+  cansend.data[1] = state;
+  cansend.data[2] = state;
+  mcp2515.sendMessage(&cansend);
+  }
+}
