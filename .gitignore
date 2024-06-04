@@ -1,6 +1,0 @@
-error.log   //error.log is a file name & will ignore only this
-*.log       //will ignore all the .log files
-ahsan/      //will ignore "ahsan" folder
-/ahsan/     //it will ignore only outer folder not the other things which is inside the folder
-ahsan/static // "ahsan" is a folder in which "static" file is there & it will ignore only that static file.
-second.txt

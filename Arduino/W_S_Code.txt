@@ -1,0 +1,65 @@
+//SCALE
+#include "HX711.h" //Include HX711 Liberary
+const int LOADCELL_DOUT_PIN = 7;
+const int LOADCELL_SCK_PIN = 6;
+HX711 scale;
+void Scale(){
+   int Action = digitalRead(2);
+     int Tare = digitalRead(3);
+     int Reset = digitalRead(4);
+     int Skip = digitalRead(5);
+     if(Tare == 0){
+     Serial.println("Tare");
+     scale.tare();}   // reset the scale to 0
+     if(Action == 0){Serial.println("Action");}
+     if(Reset == 0){Serial.println("Reset");}
+     if(Skip == 0){Serial.println("Skip");}
+     Serial.println(scale.get_units(3), 2);// print the average of 3 readings & 2 digits after point.
+}
+//RFID
+#include <SoftwareSerial.h> //It is a library.
+SoftwareSerial rfid(8, 9); // RX, TX
+short rfidCount=0;
+char tagChar;
+String tagStr= "",tagStr2= "";//these are the two empty strings.
+void checkRfid(){
+    while(rfid.available()){
+        tagChar = rfid.read();
+          if(rfidCount < 10)            
+          tagStr += tagChar;//tagChar will send one digit to tagStr.
+          rfidCount++;//rfidCount increase by 1.
+    }
+    if(rfidCount >= 10){
+      rfidCount = 0;
+          tagStr2 = tagStr;
+          tagStr2.toLowerCase();//convert all latters to lower case.
+          Serial.print(tagStr2[0]);
+          Serial.print(tagStr2[1]);
+          Serial.print(tagStr2[2]);
+          Serial.print(tagStr2[3]);
+          Serial.print(tagStr2[4]);
+          Serial.print(tagStr2[5]);
+          Serial.print(tagStr2[6]);
+          Serial.print(tagStr2[7]);
+          Serial.print(tagStr2[8]);
+          Serial.println(tagStr2[9]);
+       tagStr = "";//empty the tagStr.
+    }
+}
+void setup() {
+   Serial.begin(9600);
+  //SCALE
+  pinMode(2,INPUT_PULLUP);//The State of Button Will be 1 By default
+  pinMode(3,INPUT_PULLUP);
+  pinMode(4,INPUT_PULLUP);
+  pinMode(5,INPUT_PULLUP);
+  scale.begin(LOADCELL_DOUT_PIN, LOADCELL_SCK_PIN);
+  scale.set_scale(2989.999);    // this value is obtained by calibrating the scale with known weights
+  scale.tare();   // reset the scale to 0
+  //RFID
+  rfid.begin(9600);
+}
+void loop(){
+ Scale();
+ checkRfid();
+ }

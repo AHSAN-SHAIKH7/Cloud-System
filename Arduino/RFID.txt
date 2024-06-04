@@ -1,0 +1,42 @@
+#include <SoftwareSerial.h> //It is a library.
+SoftwareSerial rfid(8, 9); // RX, TX
+short rfidCount=0;
+char tagChar;
+String tagStr= "",tagStr2= "";//these are the two empty strings.
+void checkRfid(){
+    while(rfid.available()){
+        tagChar = rfid.read();
+          if(rfidCount < 10)            
+          tagStr += tagChar;//tagChar will send one digit to tagStr.
+          rfidCount++;//rfidCount increase by 1.
+    }
+    if(rfidCount >= 10){
+      rfidCount = 0;
+          tagStr2 = tagStr;
+          tagStr2.toLowerCase();//convert all latters to lower case.
+          Serial.print(tagStr2[0]);
+          Serial.print(tagStr2[1]);
+          Serial.print(tagStr2[2]);
+          Serial.print(tagStr2[3]);
+          Serial.print(tagStr2[4]);
+          Serial.print(tagStr2[5]);
+          Serial.print(tagStr2[6]);
+          Serial.print(tagStr2[7]);
+          Serial.print(tagStr2[8]);
+          Serial.println(tagStr2[9]);
+          Serial.println(tagStr2);
+  if(tagStr2=="1200728992")
+       digitalWrite(3,HIGH);
+       tagStr = "";//empty the tagStr.
+       delay(5000);
+       digitalWrite(3,LOW);
+    }
+}
+void setup() {
+ pinMode(3,OUTPUT);
+ Serial.begin(9600);
+ rfid.begin(9600);
+}
+void loop() { // run over and over
+  checkRfid();
+  }
