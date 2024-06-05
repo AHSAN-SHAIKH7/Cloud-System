@@ -1,0 +1,16 @@
+char H;      //          Write Anything On Serial Monitor To Print
+
+void setup() 
+{
+ Serial.begin(9600); 
+ Serial.print("I Receivrd: ");
+}
+void loop() 
+{
+ if (Serial.available()) 
+{
+ H = Serial.read();
+ //Serial.print("india");
+ Serial.print(H);
+ }
+}
