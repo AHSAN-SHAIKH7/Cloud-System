@@ -1,0 +1,52 @@
+String Saif;
+void setup() {
+  Serial.begin(9600);
+  pinMode(12, OUTPUT);
+  pinMode(6, OUTPUT);
+  pinMode(4, OUTPUT);// set the digital pin as output:
+}
+
+void loop() {
+  if(Serial.available()) // if there is data comming
+  {
+     Saif = Serial.readStringUntil('\n'); // read string until meet newline character
+
+    if(Saif == "ON GREEN LED")
+    {
+      digitalWrite(12, HIGH); // turn on LED
+      Serial.println("Green LED is turned ON"); // send action to Serial Monitor
+    }
+    else
+    if(Saif == "ON RED LED")
+    {
+      digitalWrite(4, HIGH);  // turn off LED
+      Serial.println("Red LED is turned ON"); // send action to Serial Monitor
+    }
+     else
+    if(Saif == "ON YELLOW LED")
+    {
+      digitalWrite(6, HIGH);  // turn off LED
+      Serial.println("Yellow LED is turned ON"); // send action to Serial Monitor
+    }
+    else
+    if(Saif == "OFF GREEN LED")
+    {
+      digitalWrite(12, LOW);  // turn off LED
+      Serial.println("Green LED is turned OFF"); // send action to Serial Monitor
+    }
+     else
+    if(Saif == "OFF RED LED")
+    {
+      digitalWrite(4, LOW);  // turn off LED
+      Serial.println("Red LED is turned OFF"); // send action to Serial Monitor
+    }
+     else
+    if(Saif == "OFF YELLOW LED")
+    {
+      digitalWrite(6, LOW);  // turn off LED
+      Serial.println("Yellow LED is turned OFF"); // send action to Serial Monitor
+    }
+    
+    
+  }
+}
