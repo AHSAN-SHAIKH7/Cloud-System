@@ -1,4 +1,4 @@
-
+THIS IS SOLVE ERROR BRANCH:
 int led,i;
 void setup() {
  digitalWrite(6,OUTPUT);
