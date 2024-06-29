@@ -1,0 +1,26 @@
+
+int led,i;
+void setup() {
+ digitalWrite(6,OUTPUT);
+ Serial.begin(9600);
+ Serial.println("HOW MANY TIME YOU WANT TO GLOW LED");
+ digitalWrite(6, LOW);
+ while(Serial.available()==0)
+ {}
+ 
+ led = Serial.parseInt();
+}
+void loop() {
+  for(i=0;i<led;i++)
+  {
+ digitalWrite(6, HIGH);
+ Serial.println("HIGH");
+ delay(1000);
+ digitalWrite(6, LOW);
+ Serial.println("LOW");
+ delay(1000);
+ 
+  }
+  delay(3000);
+  
+}
