@@ -1,0 +1,31 @@
+body{
+    background-color: cadetblue;
+    text-align: center;
+}
+
+.container{
+    height: 70vh; /*70% of View port Hight*/
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.game{
+height:60vh; /*60% of View port Hight*/
+width: 60vh; /*60% of View port Width*/
+display: flex; /*Arrange all the tags horizontally*/
+flex-wrap: wrap; /*If there is no space then come to next line.*/
+background-color: blue;
+justify-content: center; /*Center the container Horizontally.*/
+align-items: center; /*Center the container vertically.*/
+gap: 1.5vh; /*1.5% of View port gap*/
+}
+
+.box{
+    height: 18vh; /*18% of View port Hight*/
+    width: 18vh; /*18% of View port Width*/
+    border-radius: 2vh; /*2% of View port Radius*/
+    border: none; /* No Border */
+}
+
