@@ -8,7 +8,6 @@ body{
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: aquamarine;
 }
 
 .game{
@@ -16,7 +15,6 @@ height:60vh; /*60% of View port Hight*/
 width: 60vh; /*60% of View port Width*/
 display: flex; /*Arrange all the tags horizontally*/
 flex-wrap: wrap; /*If there is no space then come to next line.*/
-background-color: blue;
 justify-content: center; /*Center the container Horizontally.*/
 align-items: center; /*Center the container vertically.*/
 gap: 1.5vh; /*1.5% of View port gap*/
@@ -27,5 +25,28 @@ gap: 1.5vh; /*1.5% of View port gap*/
     width: 18vh; /*18% of View port Width*/
     border-radius: 2vh; /*2% of View port Radius*/
     border: none; /* No Border */
+    font-size: 10vh;
+    background-color: rgb(243, 243, 191);
+    color: orangered;/*text colour*/
 }
+
+.reset{
+    padding: 2vh;
+    font-size: 2vh;
+    background-color: rgb(58, 51, 51);
+    color: white;
+    border-radius: 1rem;
+    border:none;
+}
+
+#start{
+   
+    padding: 2vh;
+    font-size: 2vh;
+    background-color: rgb(58, 51, 51);
+    color: white;
+    border-radius: 1rem;
+    border:none;  
+}
+
 
