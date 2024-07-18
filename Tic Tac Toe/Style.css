@@ -3,6 +3,25 @@ body{
     text-align: center;
 }
 
+.msg-container{
+    height: 500px;
+    padding-top: 200px;
+}
+
+#msg{
+    color: white;
+    font-size: 40px;
+}
+
+#new-btn{
+    padding: 2vh;
+    font-size: 2vh;
+    background-color: rgb(58, 51, 51);
+    color: white;
+    border-radius: 1rem;
+    border:none;
+}
+
 .container{
     height: 70vh; /*70% of View port Hight*/
     display: flex;
@@ -27,7 +46,6 @@ gap: 1.5vh; /*1.5% of View port gap*/
     border: none; /* No Border */
     font-size: 10vh;
     background-color: rgb(243, 243, 191);
-    color: orangered;/*text colour*/
 }
 
 .reset{
@@ -39,14 +57,11 @@ gap: 1.5vh; /*1.5% of View port gap*/
     border:none;
 }
 
-#start{
-   
-    padding: 2vh;
-    font-size: 2vh;
-    background-color: rgb(58, 51, 51);
-    color: white;
-    border-radius: 1rem;
-    border:none;  
+.hide{
+    display: none;
 }
+
+
+
 
 
