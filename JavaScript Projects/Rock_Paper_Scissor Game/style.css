@@ -1,0 +1,68 @@
+*{             /*Inicially keep all the margin & padding 0*/
+    margin: 0;
+    padding: 0;
+    text-align: center; /*center all the containts*/
+}
+
+h1{
+    background-color: orangered;
+    color: white;
+    height: 5rem; /*rem is font size of root element*/
+    line-height: 5rem; /*give the heigh to the text according to box hight.*/
+}
+
+.choices{
+    display: flex;
+    justify-content: center;
+    gap: 3rem; /*gap between all three.*/
+    margin-top: 4rem;
+  }
+
+.choice:hover{
+    opacity: 0.7; /*decrease the opacity*/
+    cursor: pointer;/*convert cursor to pointer.*/
+    background-color:blue;
+}
+
+.score-board{
+    display: flex;
+    justify-content: center;
+   /* align-items: center;*/
+   font-size: 2rem;
+   margin-top: 4rem;
+   gap: 5rem;
+}
+
+#comp-score{ /*apply the style*/
+    font-size: 3rem;
+    color: red;
+}
+
+#user-score{ /*apply the style*/
+    font-size: 3rem;
+    color: blue;
+}
+
+.combo{
+    padding-top: 2rem;
+    display: flex;
+    justify-content: center;
+    gap: 4rem;
+    font-size: 1.5rem;
+}
+
+.msg-container{
+    margin-top: 4rem;
+}
+
+#msg{
+    margin-top: 4rem;
+    background-color: black;
+    color: white;
+    font-size: 2rem;
+    display: inline;/*display style as much text have.*/
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+
